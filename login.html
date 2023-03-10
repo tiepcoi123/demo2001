@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Example</title>
+  <style>
+    /* CSS for login form */
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-input {
+      display: block;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .form-button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .form-button:hover {
+      background-color: #3e8e41;
+    }
+
+    /* CSS for welcome message */
+    .welcome-message {
+      background-color: #f2f2f2;
+      padding: 20px;
+      border-radius: 4px;
+      margin-top: 20px;
+    }
+
+    .welcome-message h3 {
+      margin-bottom: 10px;
+    }
+
+    .logout-button {
+      background-color: #f44336;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .logout-button:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-group">
+    <label class="form-label" for="username">Username:</label>
+    <input type="text" class="form-input" placeholder="Username" id="username">
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="password">Password:</label>
+    <input type="password" class="form-input" placeholder="Password" id="password">
+  </div>
+  <button class="form-button" onclick="login()">Login</button>
+  
+  <div class="welcome-message" style="display:none;">
+    <h3>Welcome, <span id="user"></span>!</h3>
+    <button class="logout-button" onclick="logout()">Logout</button>
+  </div>
+  
+  <script>
+    function login() {
+      // Get username and password input elements
+      let username = document.getElementById('username').value;
+      let password = document.getElementById('password').value;
+      
+      // Check if username and password are valid (in this example, we only accept "admin" and "password")
+      if (username === 'admin' && password === 'password') {
+        // Display welcome message and hide login form
+        document.querySelector('.form-group').style.display = 'none';
+        document.querySelector('.form-button').style.display = 'none';
+        document.querySelector('.welcome-message').style.display = 'block';
+        document.getElementById('user').textContent = username;
+      } else {
+        // Invalid login, display error message
+        alert('Invalid username or password');
+      }
+    }
+
+    function logout() {
+      // Hide welcome message and display login form
+      document.querySelector('.form-group').style.display = 'block';
+      document.querySelector('.form-button').style.display = 'block';
+      document.querySelector('.welcome-message').style.display = 'none';
+      
+      // Clear username and password inputs
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+    }
+  </script>
+</body>
+</html>
